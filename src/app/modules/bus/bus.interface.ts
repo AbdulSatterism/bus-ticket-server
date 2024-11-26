@@ -1,10 +1,14 @@
-export type TBus ={
+
+export type TBus= {
     busName: string;
     busNumber: string;
-    availableSeats:number;
-    from: string;
-    to: string;
-    departureTime: Date;
-    arrivalTime: Date;
-  }
-  
+    from: string; 
+    to: string; 
+    departureTime: string;
+    arrivalTime: string;
+    totalSeats: number;
+    availableSeats: number;
+    price: number;
+    available?:boolean
+}
+
