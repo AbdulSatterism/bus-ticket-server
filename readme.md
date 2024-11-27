@@ -10,6 +10,11 @@
 
 ## Zod for validation
 
+# postman link: https://dark-space-978005.postman.co/workspace/New-Team-Workspace~db451836-9ce1-4ebd-9484-7ea3691f0cb4/collection/16433427-1a447354-a414-4c78-a00b-7dda5aa1071b?action=share&creator=16433427
+
+# ER- Diagram Link : https://drive.google.com/drive/folders/1KNW2ndqmLFXGH7OreuXNkoLMy6dW7QAJ?usp=sharing
+
+
 
 # live link : https://bus-ticket-server-azure.vercel.app
 
