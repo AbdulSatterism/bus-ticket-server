@@ -68,6 +68,16 @@
 "\_\_v": 0
 }
 }
+## 1. user login : post: /auth/logout
+
+### input =>
+
+### output=>
+{
+    "success": true,
+    "message": "User Logout successfully",
+    "data": ""
+}
 
 # need JWT token in hearders: "Bearer secret_token"
 

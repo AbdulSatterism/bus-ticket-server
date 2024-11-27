@@ -5,6 +5,7 @@ import { TLogin, TUser } from './user.interface';
 import { User } from './user.model';
 import { createToken } from './user.utils';
 import config from '../../config';
+import { Request } from 'express';
 
 
 const createUserIntoDB = async (payload: TUser) => {
@@ -86,7 +87,15 @@ const loginUser = async (payload: TLogin) => {
 
 
 
+const logoutUser = async (req: Request) => {
+ 
+  return  req?.res?.clearCookie('accessToken');
+  
+};
+
+
 export const UserServices = {
   createUserIntoDB,
-  loginUser
+  loginUser,
+  logoutUser
 };

@@ -11,6 +11,8 @@ router.post('/register',validateRequest(UserValidations.createUserValidationSche
 
 router.post('/login',UserController.loginUser );
 
+router.post('/logout',UserController.logoutUser );
+
 
 
 
