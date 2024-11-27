@@ -10,9 +10,12 @@
 
 ## Zod for validation
 
+
+# live link : https://bus-ticket-server-azure.vercel.app
+
 # Authentication route =>
 
-## 1. user registration : post: /auth/register
+## 1. user registration : post: https://bus-ticket-server-azure.vercel.app/auth/register
 
 ### input =>
 
@@ -42,7 +45,7 @@
 }
 }
 
-## 1. user login : post: /auth/login
+## 1. user login : post: https://bus-ticket-server-azure.vercel.app/auth/login
 
 ### input =>
 
@@ -68,7 +71,7 @@
 "\_\_v": 0
 }
 }
-## 1. user login : post: /auth/logout
+## 1. user login : post: https://bus-ticket-server-azure.vercel.app/auth/logout
 
 ### input =>
 
@@ -83,7 +86,7 @@
 
 # Bus route by admin =>
 
-## 1.bus added: - POST /admin/bus
+## 1.bus added: - POST https://bus-ticket-server-azure.vercel.app/admin/bus
 
 ### input =>
 
@@ -123,7 +126,7 @@
 }
 }
 
-## 1.bus update :- PUT /admin/bus/:id
+## 1.bus update :- PUT https://bus-ticket-server-azure.vercel.app/admin/bus/:id
 
 ### input =>
 
@@ -155,7 +158,7 @@
 }
 }
 
-## 1.bus update :- DELETE /admin/bus/:id
+## 1.bus update :- DELETE https://bus-ticket-server-azure.vercel.app/admin/bus/:id
 
 ### input => /admin/bus/6745f120d9c7afe90f915784
 
@@ -182,7 +185,7 @@
 }
 }
 
-## 1.Ticket created :- POST /admin/ticket:
+## 1.Ticket created :- POST https://bus-ticket-server-azure.vercel.app/admin/ticket:
 
 ### input =>
 
@@ -209,7 +212,7 @@
 "\_\_v": 0
 }
 }
-## 1.Ticket update :- - PUT /admin/ticket/674695a4963a874b4c5112be: 
+## 1.Ticket update :- - PUT https://bus-ticket-server-azure.vercel.app/admin/ticket/674695a4963a874b4c5112be: 
 
 ### input =>
 {
@@ -233,7 +236,7 @@
     }
 }
 
-## 1.Ticket delete :-  DELETE: /admin/ticket/674695a4963a874b4c5112be: 
+## 1.Ticket delete :-  DELETE: https://bus-ticket-server-azure.vercel.app/admin/ticket/674695a4963a874b4c5112be: 
 
 ### input =>
 
@@ -255,7 +258,7 @@
 
 # User  Bus services 
 
-## get available buses : - GET /buses: View all available buses.
+## get available buses : - GET https://bus-ticket-server-azure.vercel.app/buses: View all available buses.
 ### output =>
 {
     "success": true,
@@ -279,7 +282,7 @@
         }
     ]
 }
-##  - GET buses?from=dhaka&to=chitt
+##  - GET: https://bus-ticket-server-azure.vercel.app/buses?from=dhaka&to=chitt
 ## and also alow filtering from - to destination; if not filtering from to then show only available buses
 ### output =>
 {
@@ -307,7 +310,7 @@
 
 # User  Ticket services 
 
-## get available buses : - GET /tickets: View all available tickets.
+## get available buses : - GET https://bus-ticket-server-azure.vercel.app/tickets: View all available tickets.
 
 ### output =>
 {
@@ -342,7 +345,7 @@
     ]
     .................
 }
-##  - GET /tickets?busId=6745f69a9a3675d2d27f51f3&travelDate=2024-12-10
+##  - GET https://bus-ticket-server-azure.vercel.app/tickets?busId=6745f69a9a3675d2d27f51f3&travelDate=2024-12-10
 ## and also alow find ticket by specific bus id or travel data
 ### output =>
 {
@@ -379,7 +382,7 @@
 
 # User  Ticket Purchase ticket
 # need authorization token send : "bearer secretToken"
-## routes :GET - /tickets/purchase
+## routes :GET - https://bus-ticket-server-azure.vercel.app/tickets/purchase
 
 ## input =>
 {
