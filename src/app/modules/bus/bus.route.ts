@@ -7,13 +7,23 @@ import { USER_ROLE } from '../user/user.constant';
 
 const router = express.Router();
 
-router.post('/admin/bus',auth(USER_ROLE.Admin),validateRequest(busValidation.createBusValidationSchema) ,busController.createBus);
+router.post(
+  '/admin/bus',
+  auth(USER_ROLE.Admin),
+  validateRequest(busValidation.createBusValidationSchema),
+  busController.createBus,
+);
 
-router.put('/admin/bus/:id',auth(USER_ROLE.Admin),validateRequest(busValidation.updateBusValidationSchema) ,busController.busUpdate);
+router.put(
+  '/admin/bus/:id',
+  auth(USER_ROLE.Admin),
+  validateRequest(busValidation.updateBusValidationSchema),
+  busController.busUpdate,
+);
 
-router.delete('/admin/bus/:id',auth(USER_ROLE.Admin),busController.busDelete);
+router.delete('/admin/bus/:id', auth(USER_ROLE.Admin), busController.busDelete);
 
-//get all buses 
+//get all buses
 
 router.get('/buses', busController.getAllAvailableBus);
 

@@ -7,7 +7,6 @@ import config from '../config';
 import { User } from '../modules/user/user.model';
 import { TUserRole } from '../modules/user/user.interface';
 
-
 const auth = (...requireRole: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const tokenWithBearer = req.headers.authorization;

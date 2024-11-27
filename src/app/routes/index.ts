@@ -4,8 +4,6 @@ import { busRoutes } from '../modules/bus/bus.route';
 import { ticketRoutes } from '../modules/ticket/ticket.route';
 import { purchasesRoutes } from '../modules/purches/purches.route';
 
-
-
 const router = Router();
 
 const moduleRoutes = [
@@ -24,7 +22,7 @@ const moduleRoutes = [
   {
     path: '/',
     route: purchasesRoutes,
-  }
+  },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

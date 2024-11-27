@@ -10,7 +10,7 @@ const createUser = catchAsync(async (req, res) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'User registered successfully',
-    token:result?.accessToken,
+    token: result?.accessToken,
     data: result?.resUser,
   });
 });
@@ -22,26 +22,24 @@ const loginUser = catchAsync(async (req, res) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'User login successfully',
-    token:result?.accessToken,
+    token: result?.accessToken,
     data: result?.resUser,
   });
 });
 
-const logoutUser = catchAsync(async (req, res) => { 
-
-  await UserServices.logoutUser(req)
+const logoutUser = catchAsync(async (req, res) => {
+  await UserServices.logoutUser(req);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'User Logout successfully',
-    data:"",
+    data: '',
   });
 });
-
 
 export const UserController = {
   createUser,
   loginUser,
-  logoutUser
+  logoutUser,
 };

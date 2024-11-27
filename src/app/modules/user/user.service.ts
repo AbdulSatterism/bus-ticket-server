@@ -7,7 +7,6 @@ import { createToken } from './user.utils';
 import config from '../../config';
 import { Request } from 'express';
 
-
 const createUserIntoDB = async (payload: TUser) => {
   const user = await User.isUserExistByEmail(payload?.email);
 
@@ -29,7 +28,7 @@ const createUserIntoDB = async (payload: TUser) => {
   const jwtPayload: TJWTPayload = {
     userId: newUser?._id,
     role: newUser?.role,
-    email: newUser?.email
+    email: newUser?.email,
   };
 
   const accessToken = createToken(
@@ -42,7 +41,6 @@ const createUserIntoDB = async (payload: TUser) => {
 
   return { accessToken, resUser };
 };
-
 
 const loginUser = async (payload: TLogin) => {
   const { email, password } = payload;
@@ -71,7 +69,7 @@ const loginUser = async (payload: TLogin) => {
   const jwtPayload: TJWTPayload = {
     userId: user?._id,
     role: user?.role,
-    email: user?.email
+    email: user?.email,
   };
 
   const accessToken = createToken(
@@ -85,17 +83,12 @@ const loginUser = async (payload: TLogin) => {
   return { accessToken, resUser };
 };
 
-
-
 const logoutUser = async (req: Request) => {
- 
-  return  req?.res?.clearCookie('accessToken');
-  
+  return req?.res?.clearCookie('accessToken');
 };
-
 
 export const UserServices = {
   createUserIntoDB,
   loginUser,
-  logoutUser
+  logoutUser,
 };

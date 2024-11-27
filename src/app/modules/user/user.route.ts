@@ -3,17 +3,16 @@ import express from 'express';
 import { UserValidations } from './user.validation';
 import validateRequest from '../../middleware/validateRequest';
 
-
-
 const router = express.Router();
 
-router.post('/register',validateRequest(UserValidations.createUserValidationSchema) ,UserController.createUser );
+router.post(
+  '/register',
+  validateRequest(UserValidations.createUserValidationSchema),
+  UserController.createUser,
+);
 
-router.post('/login',UserController.loginUser );
+router.post('/login', UserController.loginUser);
 
-router.post('/logout',UserController.logoutUser );
-
-
-
+router.post('/logout', UserController.logoutUser);
 
 export const UserRoutes = router;
