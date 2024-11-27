@@ -13,4 +13,8 @@ router.put('/admin/bus/:id',auth(USER_ROLE.Admin),validateRequest(busValidation.
 
 router.delete('/admin/bus/:id',auth(USER_ROLE.Admin),busController.busDelete);
 
+//get all buses 
+
+router.get('/buses', busController.getAllAvailableBus);
+
 export const busRoutes = router;

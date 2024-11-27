@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from "http-status";
 import AppError from "../../errors/appError";
 import { TTicket } from "./ticket.interface";
@@ -7,7 +8,7 @@ import { Ticket } from "./ticket.model";
 
 
 const createTicketIntoDB = async (payload: TTicket) => {
-    const {busId,seatNumber}=payload;
+    const {busId}=payload;
     const busExist = await Bus.findById(busId)
   
     if (!busExist) {
@@ -18,18 +19,6 @@ const createTicketIntoDB = async (payload: TTicket) => {
       throw new AppError(httpStatus.BAD_REQUEST, 'bus not available this time');
     }
   
-// const isThisTicketExixt = await Ticket.findOne({seatNumber});
-
-//same bus same ticket already exist or not if exist then throw error
-
-// if (busExist?._id.equals(busId) || isThisTicketExixt?.seatNumber === seatNumber) {
-//   throw new AppError(httpStatus.BAD_REQUEST, 'This ticket already exist');
-// }
-
-
-
-
-
 
     const result = await Ticket.create(payload)
 
@@ -39,34 +28,61 @@ const createTicketIntoDB = async (payload: TTicket) => {
 
  
 
-// const updateBusByAdmin = async (id:string,payload:TBus) => {
+const updateTicketByAdmin = async (id:string,payload: TTicket) => {
     
-//     const busExist = await Bus.findById(id);
+    const ticketExist = await Ticket.findById(id);
   
-//     if (!busExist) {
-//       throw new AppError(httpStatus.BAD_REQUEST, 'This bus is not available in database');
-//     }
+    if (!ticketExist) {
+      throw new AppError(httpStatus.BAD_REQUEST, 'This ticket is not available in database');
+    }
   
-//     const result = await Bus.findByIdAndUpdate(id, payload,{new:true})
+    const result = await Ticket.findByIdAndUpdate(id, payload,{new:true})
 
-//     return result;
+    return result;
 
-//   };
+  };
 
-// const deleteBusByAdmin = async (id:string) => {
+const deleteTicketByAdmin = async (id:string) => {
     
-//     const busExist = await Bus.findById(id);
+  const ticketExist = await Ticket.findById(id);
   
-//     if (!busExist) {
-//       throw new AppError(httpStatus.BAD_REQUEST, 'This bus is not available in database');
-//     }
+  if (!ticketExist) {
+    throw new AppError(httpStatus.BAD_REQUEST, 'This ticket is not available in database');
+  }
   
-//     const result = await Bus.findByIdAndDelete(id,{new:true})
+    const result = await Ticket.findByIdAndDelete(id,{new:true})
 
-//     return result;
+    return result;
 
-//   };
+  };
+
+// get available ticket for specific bus=> 
+
+const getAllAvailableTicketSpecificBus = async (query:{busId?:string; travelDate?:string}) => {
+  
+  const filter: any = { status: 'available' };
+
+  // Add busId to the filter if provided
+  if (query?.busId) {
+    filter.busId = query.busId
+  }
+  if (query?.travelDate) {
+    filter.travelDate = query.travelDate; 
+  }
+
+  // Find tickets based on the filter
+  const result = await Ticket.find(filter).populate('busId'); 
+
+    return result;
+
+  };
+
+
+
 
   export const ticketServices ={
     createTicketIntoDB,
+    updateTicketByAdmin,
+    deleteTicketByAdmin,
+    getAllAvailableTicketSpecificBus
   }

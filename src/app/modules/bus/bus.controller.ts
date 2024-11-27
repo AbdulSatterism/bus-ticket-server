@@ -36,8 +36,21 @@ const busDelete = catchAsync(async (req, res) => {
     });
   });
 
+const getAllAvailableBus = catchAsync(async (req, res) => {
+
+    const result = await busServices.getAllAvailableBusFromDB(req.query)
+  
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Available buses got successfully',
+      data: result
+    });
+  });
+
   export const busController={
     createBus,
     busUpdate,
-    busDelete
+    busDelete,
+    getAllAvailableBus
   }

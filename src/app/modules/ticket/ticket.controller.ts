@@ -15,6 +15,43 @@ const createTicket = catchAsync(async (req, res) => {
   });
 
 
+  const ticketUpdate = catchAsync(async (req, res) => {
+    const result = await ticketServices.updateTicketByAdmin(req.params.id,req.body)
+  
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Ticket updated successfully',
+      data: result
+    });
+  });
+
+const ticketDelete = catchAsync(async (req, res) => {
+    const result = await ticketServices.deleteTicketByAdmin(req.params.id)
+  
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Ticket deleted successfully',
+      data: result
+    });
+  });
+
+
+  const getAllAvailableTicket = catchAsync(async (req, res) => {
+    const result = await ticketServices.getAllAvailableTicketSpecificBus(req.query)
+  
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Available ticket got successfully',
+      data: result
+    });
+  });
+
   export const ticketController={
-    createTicket
+    createTicket,
+    ticketDelete,
+    ticketUpdate,
+    getAllAvailableTicket
   }
